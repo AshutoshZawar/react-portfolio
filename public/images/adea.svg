@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#1a1a2e" />
+  
+  <!-- Grid lines for tech feel -->
+  <g opacity="0.1">
+    <path d="M0 100 H800" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M0 200 H800" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M0 300 H800" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M0 400 H800" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M0 500 H800" stroke="#7f7fd5" stroke-width="1" />
+    
+    <path d="M100 0 V600" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M200 0 V600" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M300 0 V600" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M400 0 V600" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M500 0 V600" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M600 0 V600" stroke="#7f7fd5" stroke-width="1" />
+    <path d="M700 0 V600" stroke="#7f7fd5" stroke-width="1" />
+  </g>
+  
+  <!-- Central AI Brain -->
+  <g>
+    <circle cx="400" cy="250" r="80" fill="url(#brain-gradient)" />
+    <circle cx="400" cy="250" r="70" fill="none" stroke="#7f7fd5" stroke-width="2" stroke-dasharray="10,5" />
+    
+    <!-- Neural network paths -->
+    <path d="M380 200 Q360 180, 340 200 Q320 220, 340 240 Q360 260, 340 280" fill="none" stroke="#91a7ff" stroke-width="2" />
+    <path d="M420 200 Q440 180, 460 200 Q480 220, 460 240 Q440 260, 460 280" fill="none" stroke="#91a7ff" stroke-width="2" />
+    <path d="M370 230 L430 230" fill="none" stroke="#91a7ff" stroke-width="2" />
+    <path d="M370 270 L430 270" fill="none" stroke="#91a7ff" stroke-width="2" />
+    
+    <!-- Neural nodes -->
+    <circle cx="340" cy="200" r="5" fill="#91a7ff" />
+    <circle cx="340" cy="240" r="5" fill="#91a7ff" />
+    <circle cx="340" cy="280" r="5" fill="#91a7ff" />
+    <circle cx="370" cy="230" r="5" fill="#91a7ff" />
+    <circle cx="370" cy="270" r="5" fill="#91a7ff" />
+    <circle cx="430" cy="230" r="5" fill="#91a7ff" />
+    <circle cx="430" cy="270" r="5" fill="#91a7ff" />
+    <circle cx="460" cy="200" r="5" fill="#91a7ff" />
+    <circle cx="460" cy="240" r="5" fill="#91a7ff" />
+    <circle cx="460" cy="280" r="5" fill="#91a7ff" />
+  </g>
+  
+  <!-- Data Pipeline Flow -->
+  <g>
+    <!-- Data Source -->
+    <rect x="100" y="150" width="80" height="60" rx="10" fill="#2d6cdf" opacity="0.8" />
+    <text x="140" y="185" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Data Source</text>
+    
+    <!-- ETL Process -->
+    <rect x="100" y="350" width="80" height="60" rx="10" fill="#2d6cdf" opacity="0.8" />
+    <text x="140" y="385" font-family="Arial" font-size="12" fill="white" text-anchor="middle">ETL Process</text>
+    
+    <!-- Data Warehouse -->
+    <rect x="620" y="150" width="80" height="60" rx="10" fill="#2d6cdf" opacity="0.8" />
+    <text x="660" y="185" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Data Warehouse</text>
+    
+    <!-- Analytics -->
+    <rect x="620" y="350" width="80" height="60" rx="10" fill="#2d6cdf" opacity="0.8" />
+    <text x="660" y="385" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Analytics</text>
+    
+    <!-- Data flow lines -->
+    <path d="M180 180 C250 180, 250 250, 320 250" fill="none" stroke="#91a7ff" stroke-width="3" stroke-dasharray="0,0">
+      <animate attributeName="stroke-dasharray" from="0,150" to="150,0" dur="3s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M180 380 C250 380, 250 280, 320 280" fill="none" stroke="#91a7ff" stroke-width="3" stroke-dasharray="0,0">
+      <animate attributeName="stroke-dasharray" from="0,150" to="150,0" dur="4s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M480 250 C550 250, 550 180, 620 180" fill="none" stroke="#91a7ff" stroke-width="3" stroke-dasharray="0,0">
+      <animate attributeName="stroke-dasharray" from="0,150" to="150,0" dur="3.5s" repeatCount="indefinite" />
+    </path>
+    
+    <path d="M480 280 C550 280, 550 380, 620 380" fill="none" stroke="#91a7ff" stroke-width="3" stroke-dasharray="0,0">
+      <animate attributeName="stroke-dasharray" from="0,150" to="150,0" dur="4.5s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- AWS Cloud Symbol -->
+  <g transform="translate(200, 50) scale(0.6)">
+    <path d="M55 40 L65 40 C65 20, 85 20, 85 40 L95 40 L75 60 L55 40" fill="#FF9900" />
+  </g>
+  
+  <!-- Kubernetes Symbol -->
+  <g transform="translate(600, 50) scale(0.6)">
+    <path d="M75 30 L95 40 L95 60 L75 70 L55 60 L55 40 Z" fill="#326CE5" />
+    <path d="M75 45 L85 50 L75 55 L65 50 Z" fill="#FFFFFF" />
+  </g>
+  
+  <!-- Dashboard Elements -->
+  <g transform="translate(200, 450)">
+    <rect x="0" y="0" width="400" height="100" rx="10" fill="rgba(45, 108, 223, 0.2)" stroke="#2d6cdf" stroke-width="1" />
+    
+    <!-- Chart 1 -->
+    <rect x="20" y="20" width="100" height="60" rx="5" fill="rgba(45, 108, 223, 0.3)" />
+    <path d="M30 60 L40 40 L50 55 L60 35 L70 50 L80 30 L90 45 L100 30 L110 50" fill="none" stroke="#91a7ff" stroke-width="2" />
+    
+    <!-- Chart 2 -->
+    <rect x="140" y="20" width="100" height="60" rx="5" fill="rgba(45, 108, 223, 0.3)" />
+    <circle cx="190" cy="50" r="25" fill="none" stroke="#91a7ff" stroke-width="2" />
+    <path d="M190 50 L190 25" stroke="#7f7fd5" stroke-width="2" />
+    <path d="M190 50 L210 60" stroke="#FF9900" stroke-width="2" />
+    
+    <!-- Alert -->
+    <rect x="260" y="20" width="120" height="60" rx="5" fill="rgba(45, 108, 223, 0.3)" />
+    <text x="320" y="50" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Anomaly Detected</text>
+    <text x="320" y="65" font-family="Arial" font-size="10" fill="#FF9900" text-anchor="middle">Debugging Time -60%</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">AI-Powered Automated Data Engineering Assistant</text>
+  <text x="400" y="70" font-family="Arial" font-size="16" fill="#91a7ff" text-anchor="middle">90-95% Reliability in Production Environments</text>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="brain-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7f7fd5" />
+      <stop offset="50%" stop-color="#5e60ce" />
+      <stop offset="100%" stop-color="#4ea8de" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Particle Effects -->
+  <g>
+    <circle cx="350" cy="200" r="2" fill="white" opacity="0.8">
+      <animate attributeName="cy" from="200" to="180" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.8" to="0" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="450" cy="200" r="2" fill="white" opacity="0.8">
+      <animate attributeName="cy" from="200" to="180" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.8" to="0" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="400" cy="300" r="2" fill="white" opacity="0.8">
+      <animate attributeName="cy" from="300" to="320" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="0.8" to="0" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+</svg>

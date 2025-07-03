@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#151d2e" />
+  
+  <!-- Grid lines for tech feel -->
+  <g opacity="0.1">
+    <path d="M0 100 H800" stroke="#06b6d4" stroke-width="1" />
+    <path d="M0 200 H800" stroke="#06b6d4" stroke-width="1" />
+    <path d="M0 300 H800" stroke="#06b6d4" stroke-width="1" />
+    <path d="M0 400 H800" stroke="#06b6d4" stroke-width="1" />
+    <path d="M0 500 H800" stroke="#06b6d4" stroke-width="1" />
+    
+    <path d="M100 0 V600" stroke="#06b6d4" stroke-width="1" />
+    <path d="M200 0 V600" stroke="#06b6d4" stroke-width="1" />
+    <path d="M300 0 V600" stroke="#06b6d4" stroke-width="1" />
+    <path d="M400 0 V600" stroke="#06b6d4" stroke-width="1" />
+    <path d="M500 0 V600" stroke="#06b6d4" stroke-width="1" />
+    <path d="M600 0 V600" stroke="#06b6d4" stroke-width="1" />
+    <path d="M700 0 V600" stroke="#06b6d4" stroke-width="1" />
+  </g>
+  
+  <!-- VR Headset -->
+  <g transform="translate(400, 210)">
+    <!-- Headset Body -->
+    <path d="M-100 -50 Q-110 -10, -100 30 L100 30 Q110 -10, 100 -50 Z" fill="#1f2937" stroke="#06b6d4" stroke-width="2" />
+    <path d="M-100 -50 Q-110 -10, -100 30 L100 30 Q110 -10, 100 -50 Z" fill="url(#headset-gradient)" opacity="0.5" />
+    
+    <!-- Headset Details -->
+    <rect x="-80" y="-40" width="160" height="60" rx="10" fill="#111827" />
+    <rect x="-70" y="-30" width="50" height="40" rx="5" fill="#0c4a6e" />
+    <rect x="20" y="-30" width="50" height="40" rx="5" fill="#0c4a6e" />
+    
+    <!-- Straps -->
+    <path d="M-100 -30 Q-150 -10, -150 50 Q-150 100, -50 120" fill="none" stroke="#1e3a8a" stroke-width="5" />
+    <path d="M100 -30 Q150 -10, 150 50 Q150 100, 50 120" fill="none" stroke="#1e3a8a" stroke-width="5" />
+    
+    <!-- Animation light pulses -->
+    <circle cx="-90" cy="10" r="5" fill="#06b6d4">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="90" cy="10" r="5" fill="#06b6d4">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+  
+  <!-- Person outline wearing headset -->
+  <g transform="translate(400, 310)">
+    <!-- Shoulders and body outline -->
+    <path d="M-70 0 Q-90 20, -80 80 L80 80 Q90 20, 70 0" fill="none" stroke="#64748b" stroke-width="2" />
+    
+    <!-- Head outline -->
+    <path d="M-40 -10 Q-40 -40, 0 -50 Q40 -40, 40 -10" fill="none" stroke="#64748b" stroke-width="2" />
+  </g>
+  
+  <!-- Biometric Devices -->
+  <g transform="translate(220, 350)">
+    <!-- Empatica Wristband -->
+    <rect x="0" y="0" width="80" height="25" rx="12.5" fill="#1e3a8a" stroke="#06b6d4" stroke-width="1" />
+    <text x="40" y="17" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Empatica</text>
+    
+    <!-- Wristband Animation -->
+    <circle cx="20" cy="12.5" r="5" fill="#06b6d4">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Data transmission line -->
+    <path d="M80 12.5 C140 12.5, 160 -100, 180 -140" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4,2">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="1s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <g transform="translate(580, 350)">
+    <!-- Biopac Device -->
+    <rect x="-80" y="0" width="80" height="25" rx="5" fill="#1e3a8a" stroke="#06b6d4" stroke-width="1" />
+    <text x="-40" y="17" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Biopac</text>
+    
+    <!-- Device Animation -->
+    <circle cx="-60" cy="12.5" r="5" fill="#06b6d4">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.2s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Data transmission line -->
+    <path d="M-80 12.5 C-140 12.5, -160 -100, -180 -140" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4,2">
+      <animate attributeName="stroke-dashoffset" values="0;12" dur="1s" repeatCount="indefinite" />
+    </path>
+  </g>
+  
+  <!-- Bio Signal Visualizations -->
+  <g transform="translate(230, 130)">
+    <!-- ECG/Heart Rate -->
+    <rect x="0" y="0" width="140" height="80" rx="5" fill="#1e293b" />
+    <text x="70" y="20" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Heart Rate</text>
+    
+    <!-- Heart Rate Graph -->
+    <polyline points="10,50 20,50 25,30 30,70 35,40 40,50 50,50 60,50 65,30 70,70 75,40 80,50 90,50 100,50 105,30 110,70 115,40 120,50 130,50" 
+              fill="none" stroke="#ef4444" stroke-width="1.5" />
+              
+    <!-- Heart Rate Value -->
+    <text x="70" y="65" font-family="Arial" font-size="16" fill="#ef4444" text-anchor="middle">84 BPM</text>
+  </g>
+  
+  <g transform="translate(570, 130)">
+    <!-- Respiration -->
+    <rect x="-140" y="0" width="140" height="80" rx="5" fill="#1e293b" />
+    <text x="-70" y="20" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Respiration</text>
+    
+    <!-- Respiration Graph -->
+    <path d="M-130,50 C-120,30 -110,30 -100,50 C-90,70 -80,70 -70,50 C-60,30 -50,30 -40,50 C-30,70 -20,70 -10,50" 
+          fill="none" stroke="#06b6d4" stroke-width="1.5" />
+          
+    <!-- Respiration Value -->
+    <text x="-70" y="65" font-family="Arial" font-size="16" fill="#06b6d4" text-anchor="middle">16 /min</text>
+  </g>
+  
+  <!-- VR Environment Visualization -->
+  <g transform="translate(400, 380)">
+    <!-- VR Scene Frame -->
+    <rect x="-150" y="-20" width="300" height="180" rx="10" fill="#0f172a" stroke="#06b6d4" stroke-width="1" />
+    
+    <!-- VR Scene - Simple landscape with stress level visualization -->
+    <rect x="-140" y="-10" width="280" height="160" fill="#1e3a8a" />
+    
+    <!-- Sky -->
+    <rect x="-140" y="-10" width="280" height="80" fill="#0c4a6e" />
+    <circle cx="-90" cy="20" r="15" fill="#fcd34d" /> <!-- Sun -->
+    
+    <!-- Mountains -->
+    <path d="M-140,70 L-100,20 L-60,50 L-20,10 L20,60 L60,30 L100,40 L140,50 L140,70 Z" fill="#1e40af" />
+    
+    <!-- Water -->
+    <rect x="-140" y="70" width="280" height="80" fill="#0369a1" />
+    
+    <!-- Stress level visualization - Dynamic water waves based on respiration -->
+    <path d="M-140,90 C-120,85 -100,95 -80,90 C-60,85 -40,95 -20,90 C0,85 20,95 40,90 C60,85 80,95 100,90 C120,85 140,95 140,90" 
+          fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.8">
+      <animate attributeName="d" 
+               values="M-140,90 C-120,85 -100,95 -80,90 C-60,85 -40,95 -20,90 C0,85 20,95 40,90 C60,85 80,95 100,90 C120,85 140,95 140,90;
+                       M-140,95 C-120,90 -100,100 -80,95 C-60,90 -40,100 -20,95 C0,90 20,100 40,95 C60,90 80,100 100,95 C120,90 140,100 140,95;
+                       M-140,100 C-120,95 -100,105 -80,100 C-60,95 -40,105 -20,100 C0,95 20,105 40,100 C60,95 80,105 100,100 C120,95 140,105 140,100;
+                       M-140,95 C-120,90 -100,100 -80,95 C-60,90 -40,100 -20,95 C0,90 20,100 40,95 C60,90 80,100 100,95 C120,90 140,100 140,95;
+                       M-140,90 C-120,85 -100,95 -80,90 C-60,85 -40,95 -20,90 C0,85 20,95 40,90 C60,85 80,95 100,90 C120,85 140,95 140,90" 
+               dur="5s" repeatCount="indefinite" />
+    </path>
+    
+    <!-- Reflecting stress level with color -->
+    <rect x="-140" y="70" width="280" height="80" fill="#0ea5e9" opacity="0.2">
+      <animate attributeName="opacity" values="0.1;0.3;0.1" dur="4s" repeatCount="indefinite" />
+    </rect>
+  </g>
+  
+  <!-- TCP/IP Connection Visualization -->
+  <g transform="translate(400, 280)">
+    <path d="M-120,-90 C-100,-70 -50,-110 0,-90 C50,-70 100,-110 120,-90" fill="none" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,3">
+      <animate attributeName="stroke-dashoffset" values="0;16" dur="2s" repeatCount="indefinite" />
+    </path>
+    
+    <text x="0" y="-100" font-family="Arial" font-size="10" fill="#a855f7" text-anchor="middle">TCP/IP Socket Connection</text>
+  </g>
+  
+  <!-- Stats Box -->
+  <g transform="translate(650, 500)">
+    <rect x="-150" y="-60" width="180" height="80" rx="5" fill="#1e293b" opacity="0.8" />
+    <text x="-65" y="-40" font-family="Arial" font-size="12" fill="#06b6d4">Research Productivity:</text>
+    <text x="10" y="-40" font-family="Arial" font-size="12" fill="#06b6d4" font-weight="bold">+25%</text>
+    
+    <text x="-65" y="-20" font-family="Arial" font-size="12" fill="#06b6d4">Participants:</text>
+    <text x="10" y="-20" font-family="Arial" font-size="12" fill="#06b6d4" font-weight="bold">60+</text>
+    
+    <text x="-65" y="0" font-family="Arial" font-size="12" fill="#06b6d4">Data Points:</text>
+    <text x="10" y="0" font-family="Arial" font-size="12" fill="#06b6d4" font-weight="bold">2000+</text>
+  </g>
+  
+  <!-- Technology Stack -->
+  <g transform="translate(180, 500)">
+    <rect x="-150" y="-60" width="300" height="80" rx="5" fill="#1e293b" opacity="0.8" />
+    <text x="0" y="-40" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Technologies</text>
+    
+    <g transform="translate(-125, -15)">
+      <circle cx="0" cy="0" r="15" fill="#0ea5e9" />
+      <text x="0" y="5" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Unity</text>
+    </g>
+    
+    <g transform="translate(-75, -15)">
+      <circle cx="0" cy="0" r="15" fill="#1e40af" />
+      <text x="0" y="5" font-family="Arial" font-size="10" fill="white" text-anchor="middle">C#</text>
+    </g>
+    
+    <g transform="translate(-25, -15)">
+      <circle cx="0" cy="0" r="15" fill="#ec4899" />
+      <text x="0" y="5" font-family="Arial" font-size="8" fill="white" text-anchor="middle">TCP/IP</text>
+    </g>
+    
+    <g transform="translate(25, -15)">
+      <circle cx="0" cy="0" r="15" fill="#3b82f6" />
+      <text x="0" y="5" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Python</text>
+    </g>
+    
+    <g transform="translate(75, -15)">
+      <circle cx="0" cy="0" r="15" fill="#059669" />
+      <text x="0" y="5" font-family="Arial" font-size="7" fill="white" text-anchor="middle">NumPy</text>
+    </g>
+    
+    <g transform="translate(125, -15)">
+      <circle cx="0" cy="0" r="15" fill="#f97316" />
+      <text x="0" y="5" font-family="Arial" font-size="7" fill="white" text-anchor="middle">Pandas</text>
+    </g>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">VR Biometric Feedback System</text>
+  <text x="400" y="80" font-family="Arial" font-size="16" fill="#06b6d4" text-anchor="middle">Real-time Biometric Data Integration for Immersive VR</text>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="headset-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1e40af" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+</svg>
