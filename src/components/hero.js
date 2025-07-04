@@ -233,7 +233,7 @@ const Hero = () => {
             }}
           >
             <div className="profile-image">
-              <img src="/images/profile.jpeg" alt="Ashutosh Zawar" />
+              <img src="/images/profile.jpg" alt="Ashutosh Zawar" />
             </div>
           </motion.div>
         </div>
