@@ -8,7 +8,7 @@ export const ThemeContext = createContext({
 
 // Create the provider component
 export const ThemeProvider = ({ children }) => {
-  // Initialize theme state
+  // Initialize theme state to 'light' by default
   const [theme, setTheme] = useState('light');
 
   // Effect to load saved theme on initial render
@@ -20,14 +20,13 @@ export const ThemeProvider = ({ children }) => {
       // Use saved theme if available
       setTheme(savedTheme);
       document.documentElement.setAttribute('data-theme', savedTheme);
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      // Fallback to system preference if no saved theme
-      setTheme('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
+      console.log('Loaded saved theme:', savedTheme);
+    } else {
+      // DEFAULT TO LIGHT MODE (no system preference check)
+      setTheme('light');
+      document.documentElement.setAttribute('data-theme', 'light');
+      console.log('No saved theme found, defaulting to light mode');
     }
-    
-    // Log for debugging
-    console.log('Initial theme set to:', savedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
   }, []);
 
   // Function to toggle between light and dark themes
@@ -36,7 +35,7 @@ export const ThemeProvider = ({ children }) => {
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-    console.log('Theme toggled to:', newTheme); // Debug log
+    console.log('Theme toggled to:', newTheme);
   };
 
   return (
