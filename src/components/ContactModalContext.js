@@ -2,12 +2,10 @@ import React, { createContext, useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope, FaPaperPlane, FaCheck, FaClock, FaPhone } from 'react-icons/fa';
 import { BsCalendarEvent } from 'react-icons/bs';
-import { sendEmail } from '../utils/emailService'; // Add EmailJS import
+import { sendEmail } from '../utils/emailService';
 
-// Create the context
 const ContactModalContext = createContext();
 
-// Hook to use the contact modal
 export const useContactModal = () => {
   const context = useContext(ContactModalContext);
   if (!context) {
@@ -16,13 +14,13 @@ export const useContactModal = () => {
   return context;
 };
 
-// Contact Modal Provider Component
 export const ContactModalProvider = ({ children }) => {
   const [showContactModal, setShowContactModal] = useState(false);
   const [activeTab, setActiveTab] = useState('quick');
   const [showEmailComposer, setShowEmailComposer] = useState(false);
   const [showCalendarMessage, setShowCalendarMessage] = useState(false);
   const [emailData, setEmailData] = useState({
+    from: '',
     to: 'ashujzawar5@gmail.com',
     subject: '',
     message: ''
@@ -35,16 +33,14 @@ export const ContactModalProvider = ({ children }) => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState(false); // Add error state
-  const [errorMessage, setErrorMessage] = useState(''); // Add error message state
+  const [submitError, setSubmitError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [messageLength, setMessageLength] = useState(0);
 
-  // Open contact modal
   const openContactModal = () => {
     setShowContactModal(true);
   };
 
-  // Close contact modal and reset all states
   const closeContactModal = () => {
     setShowContactModal(false);
     setShowEmailComposer(false);
@@ -55,7 +51,6 @@ export const ContactModalProvider = ({ children }) => {
     setErrorMessage('');
   };
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -68,7 +63,6 @@ export const ContactModalProvider = ({ children }) => {
     }
   };
 
-  // Handle email data changes
   const handleEmailChange = (e) => {
     const { name, value } = e.target;
     setEmailData(prevData => ({
@@ -77,7 +71,6 @@ export const ContactModalProvider = ({ children }) => {
     }));
   };
 
-  // UPDATED: Handle email submission with EmailJS
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -85,15 +78,18 @@ export const ContactModalProvider = ({ children }) => {
     setErrorMessage('');
     
     try {
-      // Validate email composer data
-      if (!emailData.subject.trim() || !emailData.message.trim()) {
-        throw new Error('Please fill in both subject and message fields.');
+      if (!emailData.from.trim() || !emailData.subject.trim() || !emailData.message.trim()) {
+        throw new Error('Please fill in all fields (From, Subject, and Message).');
       }
 
-      // EmailJS template parameters for email composer
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailData.from)) {
+        throw new Error('Please enter a valid email address in the From field.');
+      }
+
       const emailParams = {
-        from_name: 'Portfolio Visitor',
-        from_email: 'visitor@portfolio.com', // Placeholder email
+        from_name: emailData.from,
+        from_email: emailData.from,
         message: `Subject: ${emailData.subject}\n\n${emailData.message}`
       };
       
@@ -105,14 +101,13 @@ export const ContactModalProvider = ({ children }) => {
         setIsSubmitting(false);
         setSubmitSuccess(true);
         
-        // Reset email composer
         setEmailData({
+          from: '',
           to: 'ashujzawar5@gmail.com',
           subject: '',
           message: ''
         });
         
-        // Close email composer after success
         setTimeout(() => {
           setShowEmailComposer(false);
           setSubmitSuccess(false);
@@ -135,7 +130,6 @@ export const ContactModalProvider = ({ children }) => {
     }
   };
 
-  // UPDATED: Handle form submission with EmailJS
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -143,23 +137,19 @@ export const ContactModalProvider = ({ children }) => {
     setErrorMessage('');
     
     try {
-      // Validate form data
       if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
         throw new Error('Please fill in all required fields.');
       }
 
-      // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
         throw new Error('Please enter a valid email address.');
       }
 
-      // Message length validation
       if (formData.message.length < 10) {
         throw new Error('Message must be at least 10 characters long.');
       }
 
-      // EmailJS template parameters - these MUST match your template variables
       const emailParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -174,7 +164,6 @@ export const ContactModalProvider = ({ children }) => {
         setIsSubmitting(false);
         setSubmitSuccess(true);
         
-        // Reset form
         setFormData({
           name: '',
           email: '',
@@ -182,7 +171,6 @@ export const ContactModalProvider = ({ children }) => {
         });
         setMessageLength(0);
         
-        // Close modal after success message
         setTimeout(() => {
           setShowContactModal(false);
           setSubmitSuccess(false);
@@ -197,7 +185,6 @@ export const ContactModalProvider = ({ children }) => {
       setSubmitError(true);
       setErrorMessage(error.message || 'Failed to send message. Please try again.');
       
-      // Hide error message after 5 seconds
       setTimeout(() => {
         setSubmitError(false);
         setErrorMessage('');
@@ -205,7 +192,6 @@ export const ContactModalProvider = ({ children }) => {
     }
   };
 
-  // Handle calendar booking click
   const handleCalendarClick = () => {
     setShowCalendarMessage(true);
     setTimeout(() => {
@@ -213,26 +199,28 @@ export const ContactModalProvider = ({ children }) => {
     }, 4000);
   };
 
-  // Handle phone call
   const handlePhoneCall = () => {
     window.open('tel:+17043639906');
   };
 
-  // Open email composer
   const openEmailComposer = () => {
     setShowEmailComposer(true);
     setSubmitError(false);
     setErrorMessage('');
   };
 
-  // Close email composer
   const closeEmailComposer = () => {
     setShowEmailComposer(false);
     setSubmitError(false);
     setErrorMessage('');
+    setEmailData({
+      from: '',
+      to: 'ashujzawar5@gmail.com',
+      subject: '',
+      message: ''
+    });
   };
 
-  // Switch between tabs
   const switchTab = (tab) => {
     setActiveTab(tab);
     setShowCalendarMessage(false);
@@ -250,7 +238,6 @@ export const ContactModalProvider = ({ children }) => {
     <ContactModalContext.Provider value={value}>
       {children}
       
-      {/* Contact Modal */}
       <AnimatePresence>
         {showContactModal && (
           <motion.div 
@@ -295,7 +282,6 @@ export const ContactModalProvider = ({ children }) => {
               }}
             >
               {showEmailComposer ? (
-                // Email Composer View
                 <div className="email-composer">
                   <div className="modal-header" style={{ padding: '24px 24px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <h2 style={{ margin: 0, color: 'var(--text-primary)' }}>Send Email</h2>
@@ -317,6 +303,28 @@ export const ContactModalProvider = ({ children }) => {
                   
                   <form className="email-form" onSubmit={handleEmailSubmit}>
                     <div className="tab-content" style={{ padding: '24px' }}>
+                      <div className="form-group" style={{ marginBottom: '16px' }}>
+                        <label style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '8px', display: 'block' }}>From:</label>
+                        <input 
+                          type="email" 
+                          name="from" 
+                          value={emailData.from} 
+                          onChange={handleEmailChange}
+                          placeholder="your.email@example.com"
+                          required
+                          style={{
+                            padding: '12px 16px',
+                            border: '1px solid rgba(var(--accent-primary-rgb), 0.2)',
+                            borderRadius: '8px',
+                            background: 'var(--bg-primary)',
+                            color: 'var(--text-primary)',
+                            fontSize: '0.9rem',
+                            fontFamily: 'inherit',
+                            width: '100%'
+                          }}
+                        />
+                      </div>
+                      
                       <div className="form-group" style={{ marginBottom: '16px' }}>
                         <label style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-primary)', marginBottom: '8px', display: 'block' }}>To:</label>
                         <input 
@@ -407,7 +415,6 @@ export const ContactModalProvider = ({ children }) => {
                         {isSubmitting ? 'Sending...' : 'Send Email'}
                       </button>
                       
-                      {/* Success Message */}
                       {submitSuccess && (
                         <div 
                           className="success-message"
@@ -426,11 +433,10 @@ export const ContactModalProvider = ({ children }) => {
                             gap: '8px'
                           }}
                         >
-                          <FaCheck /> Email sent successfully via EmailJS! I'll get back to you soon.
+                          <FaCheck /> Email sent successfully.I'll get back to you soon.
                         </div>
                       )}
                       
-                      {/* Error Message */}
                       {submitError && (
                         <div 
                           className="error-message"
@@ -452,7 +458,6 @@ export const ContactModalProvider = ({ children }) => {
                   </form>
                 </div>
               ) : (
-                // Regular modal content
                 <>
                   <div className="modal-header" style={{ padding: '24px 24px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div className="social-links" style={{ display: 'flex', gap: '12px' }}>
@@ -544,7 +549,6 @@ export const ContactModalProvider = ({ children }) => {
                     </button>
                   </div>
                   
-                  {/* Calendar notification message */}
                   <AnimatePresence>
                     {showCalendarMessage && (
                       <motion.div 
@@ -590,7 +594,6 @@ export const ContactModalProvider = ({ children }) => {
                     <div className="tab-content" style={{ padding: '24px' }}>
                       <div className="contact-options" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                         
-                        {/* Phone Option */}
                         <div 
                           className="contact-option" 
                           onClick={handlePhoneCall}
@@ -625,7 +628,6 @@ export const ContactModalProvider = ({ children }) => {
                           </div>
                         </div>
 
-                        {/* Email Option */}
                         <div 
                           className="contact-option" 
                           onClick={openEmailComposer}
@@ -660,7 +662,6 @@ export const ContactModalProvider = ({ children }) => {
                           </div>
                         </div>
                         
-                        {/* Calendar Option */}
                         <div 
                           className="contact-option" 
                           onClick={handleCalendarClick}
@@ -799,7 +800,6 @@ export const ContactModalProvider = ({ children }) => {
                           {isSubmitting ? 'Sending...' : 'Send message'}
                         </button>
                         
-                        {/* Success Message */}
                         {submitSuccess && (
                           <div style={{
                             background: 'rgba(34, 197, 94, 0.1)',
@@ -815,11 +815,10 @@ export const ContactModalProvider = ({ children }) => {
                             justifyContent: 'center',
                             gap: '8px'
                           }}>
-                            <FaCheck /> Message sent successfully via EmailJS! I'll get back to you soon.
+                            <FaCheck /> Message sent successfully. I'll get back to you soon.
                           </div>
                         )}
                         
-                        {/* Error Message */}
                         {submitError && (
                           <div style={{
                             background: 'rgba(239, 68, 68, 0.1)',
